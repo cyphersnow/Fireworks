@@ -1,6 +1,7 @@
 class Firework{
     constructor(particleMin, particleMax){
         this.exploded = false;
+        this.explosion = false;
         this.flash = false;
         this.particleCount = int(random(particleMin.getValue(),particleMax.getValue()));
         this.color = fireWorkActiveColors[int(random(0,fireWorkActiveColors.length))];
@@ -40,10 +41,18 @@ class Firework{
             
             this.particles.push(new Particle(x, y, this.exploded, this.color, this.power, this.flash));
         }
+        this.explosion = true;
     }
+
     show(){
         for (let particle of this.particles){
             particle.show(this.exploded);
+        }
+        if (this.explosion){
+            noStroke();
+            fill(255);
+            circle(this.particles[0].pos.x,this.particles[0].pos.y,5 + int(this.power/2));
+            this.explosion = false;
         }
     }
 }

@@ -45,7 +45,7 @@ class Particle {
         this.setPrevPos();
         if (this.exploded){
             this.vel.mult(0.95+(random()/20));
-            this.burnTime -= 2;
+            this.burnTime -= 1;
             let r =int(random(0,500));
             if (r < reburnRate.getValue()){
                 this.burnTime = int(random(20,150+r*5));

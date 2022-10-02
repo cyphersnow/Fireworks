@@ -84,6 +84,9 @@ function showSliderValues(){
       }
   }
   gravity = createVector(0,gravityPower.getValue()/100);
+  if(particleMin.getValue() > particleMax.getValue()){
+    particleMin.slider.value(particleMax.getValue());
+  }
 }
 
 function resetFireworks(){
